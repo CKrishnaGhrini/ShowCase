@@ -1,2 +1,2 @@
-# ShowCase
-This website offer a platform where inspiration is exchanged freely, and the connection between artists and admirers is cultivated through every click and comment
+# showcase
+project to showcase artwork of artist from all over the world

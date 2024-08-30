@@ -1,0 +1,166 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>ShowCase Art Entry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="stylesheet/styles.css" />
+    <link rel="stylesheet" href="art_details.css">
+    <script language="javascript" type="text/javascript">
+        function clearText(field) {
+            if (field.defaultValue == field.value) field.value = '';
+            else if (field.value == '') field.value = field.defaultValue;
+        }
+    </script>
+    <script language="javascript" type="text/javascript" src="scripts/mootools-1.2.1-core.js"></script>
+    <script language="javascript" type="text/javascript" src="scripts/mootools-1.2-more.js"></script>
+    <script language="javascript" type="text/javascript" src="scripts/slideitmoo-1.1.js"></script>
+    <script language="javascript" type="text/javascript">
+        window.addEvents({
+            'domready': function() { /* thumbnails example , div containers */
+                new SlideItMoo({
+                    overallContainer: 'SlideItMoo_outer',
+                    elementScrolled: 'SlideItMoo_inner',
+                    thumbsContainer: 'SlideItMoo_items',
+                    itemsVisible: 5,
+                    elemsSlide: 3,
+                    duration: 200,
+                    itemsSelector: '.SlideItMoo_element',
+                    itemWidth: 140,
+                    showControls: 1
+                });
+            },
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="menu">
+            <ul>
+      <li><a href="art_details.php"><span>01</span>Home</a></li>
+      <li><a href="artist_about_us.php"><span>02</span>About Us</a></li>
+      <li><a href="artist_contact_us.php"><span>03</span>Contact Us</a></li>      
+      <li><a href="PHP/PHP_logout.php"><span>04</span>Logout</a></li>
+            </ul>
+        </div>
+        <!-- end of menu -->
+        <div id="header_bar">
+            <div id="header">
+                <div class="right"></div>
+                <h3>ShowCase</h3>
+                <p>Display your Art</p>
+            </div>
+        </div>
+        <!-- end of header_bar -->
+        <div class="cleaner"></div>
+        <div id="sidebar">
+            <div class="sidebar_top"></div>
+            <div class="sidebar_bottom"></div>
+            <div class="sidebar_section">
+                <h2>Categories</h2>
+                <ul class="categories_list">
+                    <li><a href="#">Mandala</a></li>
+                    <li><a href="#">Warli</a></li>
+                    <li><a href="#">Madhubani</a></li>
+                    <li><a href="#">Gond</a></li>
+                    <li><a href="#">Acrylic</a></li>
+                    <li><a href="#">Water Colour</a></li>
+                    <li><a href="#">Oil Pastel</a></li>
+                    <li><a href="#">Landscape</a></li>
+                    <li><a href="#">Oil Painting</a></li>
+                    <li><a href="#">Cityscape</a></li>
+                </ul>
+            </div>
+            <div class="sidebar_section">
+                <br><br><br><br><br><br><br>
+            </div>
+        </div>
+        <!-- end of sidebar -->
+        <div id="content">
+        <p style="color:#fff;margin-top:25px; margin-left : 90px; font-size:30px;">
+             <?php
+             session_start();
+             if(isset($_SESSION['fullname'])){
+                  echo "WELCOME " .$_SESSION['fullname']; 
+             }
+             else{
+                header("Location:index.php");
+                // echo "<br> session not found";
+             }
+                  ?>
+                  </p>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- end of latest_content_gallery -->
+            <div class="content_section">
+                <h2>Welcome to ShowCase Art Details Entry </h2>
+                <p>An online art market place for artists to sell their creations. Whether you're an established artist
+                    or just starting out, this platform offers you the tools and resources you need to reach a global
+                    audience, showcase your art here, and grow your career</p>
+            </div>
+            <div class="container">
+                <form action="PHP/PHP_art_details.php" method="post" class="form">
+                    <div class="input-box">
+                        <label for="">Type</label><br>
+                        <select name="type" id="">
+                            <option value="Mandala" name="type">Mandala</option>
+                            <option value="Warli" name="type">Warli</option>
+                            <option value="Madhubani" name="type">Madhubani</option>
+                            <option value="Gond" name="type">Gond</option>
+                            <option value="Acrylic" name="type">Acrylic</option>
+                            <option value="Water Colour" name="type">Water Colour</option>
+                            <option value="Oil Pastel" name="type">Oil Pastel</option>
+                            <option value="Landscape" name="type">Landscape</option>
+                            <option value="Oil Painting" name="type">Oil Painting
+                            </option>
+                            <option value="Cityscape">Cityscape</option>
+                        </select><br>
+                     </div>
+                     <div class="input-box">
+                        <label for="">Price</label><br>
+                        <input name="price" type="text"><br>
+                </div>
+                <div class="input-box">
+                    <label for="">Description</label><br>
+                    <textarea name="des" id="" cols="80" rows="10"
+                        placeholder="write your description here."></textarea><br>
+                    </div>
+                    <div class="input-box">
+                    <label for="">Size(in cm)</label><br>
+                    <input type="text" name="size"><br>
+                </div>
+                <div class="input-box">
+                    <label for="">Image name</label><br>
+                    <input type="text" name="imgname"><br>
+                </div>
+                <div class="input-box">
+                    <button name="submit" id="submit">Submit</button>
+                </div>
+                </form>
+               
+            </div>
+            <br><br>
+        </div>
+        <!-- end of content -->
+    </div>
+    <!-- end of wrapper -->
+    <div id="footer_wrapper">
+        <div id="footer">
+            <ul class="footer_menu">
+      <li><a href="art_details.php">Home</a></li>
+      <li><a href="artist_about_us.php">About Us</a></li>
+      <li><a href="artist_contact_us.php">Contact Us</a></li>
+                </ul>
+     
+            </ul>
+            Copyright &copy; 2024 <a href="#">ShowCase</a> | Designed by C Krishna Ghrini
+        </div>
+        <!-- end of footer -->
+    </div>
+    <!-- end of footer_wrapper -->
+</body>
+
+</html>
